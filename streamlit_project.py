@@ -6,19 +6,8 @@
 
 import streamlit as st
 import pandas as pd
-from datetime import datetime
-#from folium.plugins import HeatMap
-#import folium
-#from streamlit_folium import folium_static
 import matplotlib.pyplot as plt
-#import flickrapi
-import random
-#from dotenv import load_dotenv
-#import os
-#import urllib
-from sqlalchemy import create_engine
 
-#load_dotenv()
 
 # set page layout
 st.set_page_config(
