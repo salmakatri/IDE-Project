@@ -85,16 +85,9 @@ if show_histograms:
     avg_price.set_xlabel("Property Type")
     hist_price = avg_price.get_figure()
     st.subheader("Median Sold Price by Property Type")
-    st.pyplot(hist_price)
-
-def new_const(row):
-    if row['year_built'] >= 2021:
-        return 1
-    else:
-        return 0    
+    st.pyplot(hist_price)  
 
 if show_summary:
-    filtered_data['new_const'] = filtered_data.apply(new_const, axis=1)
     st.subheader("Summary Table")
     price_sqft = filtered_data['price_sqft'].mean()
     new_const = "{} %".format(round(filtered_data['new_const'].sum()/filtered_data.shape[0]*100,2))
