@@ -21,7 +21,7 @@ st.set_page_config(
 @st.cache(allow_output_mutation=True)
 def load_data():
     """ Load the cleaned data """
-    df = pd.read_csv("houses_data_sample.csv")
+    df = pd.read_csv("houses_data.csv")
     #houses_data["sold_date"] = pd.to_datetime(travel_log["ts"])
 #     engine = create_engine("sqlite:///sold_houses.db")
 #     df = pd.read_sql('SELECT * FROM houses;', engine)
