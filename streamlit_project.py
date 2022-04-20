@@ -74,6 +74,7 @@ st.map(filtered_data)
 if show_histograms:
     #Number of sales by property type
     sales = filtered_data.groupby(filtered_data['property_type']).size().sort_values(ascending=False).plot(kind="bar")
+    sales.xticks(rotation=90)
     sales.set_xlabel("Property Type")
     hist_sales = sales.get_figure()
     st.subheader("# Sales Split by Property Type")
@@ -83,7 +84,6 @@ if show_histograms:
     avg_price= filtered_data.groupby(filtered_data['property_type'])['sold_price'].median().sort_values(ascending=False).plot(kind="bar")
     avg_price.set_xlabel("Property Type")
     hist_price = avg_price.get_figure()
-    hist_price.update_xaxes(tickangle=90)
     st.subheader("Median Sold Price by Property Type")
     st.pyplot(hist_price)
 
