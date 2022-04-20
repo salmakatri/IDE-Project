@@ -5,7 +5,7 @@ Current real estate markets have been experiencing increasing prices and bidding
 This project aims at building an interactive dashboard to display up-to-date housing market data,summary key statistics and graphs. 
 
 ## Data Description
-The current dataset is downloaded from Redfin consisting of recently sold houses in 20 different major US cities. The data includes different variables obtained from Redfin for each house such as sold price,  sqft and house type. These features are then used to calculate different statistics during the pipeline phase to be displayed in the final dashboard. 
+The current dataset is downloaded from Redfin consisting of recently sold houses in more than 1000 different US cities. The data includes different variables obtained from Redfin for each house such as sold price,  sqft and house type. These features are then used to calculate different statistics during the pipeline phase to be displayed in the final dashboard. 
 
 The data downloaded from Redfin however doesn't contain all information presented on the website are is missing some interesting variables such as list price, Redfin estimate and days on the market before sold. So I developed a scraping pipeline to get the individual sold houses urls and scrape this information from each house's page. But the dataset scraped so far is limited and hence not shown in the app. 
 
