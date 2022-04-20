@@ -39,10 +39,10 @@ max_price = max(houses_data["sold_price"])
 # st.sidebar.subheader("Inputs")
 # min_selection, max_selection = st.sidebar.slider("Sold Price $", min_value=min_price, max_value=max_price, value = [min_price, max_price])
 
-st.sidebar.checkbox("Show Analysis by State", True, key=1)
+show_state = st.sidebar.checkbox("Show Analysis by State")
 select_state = st.sidebar.selectbox('Select a State',sorted(houses_data['state'].unique()))
 
-st.sidebar.checkbox("Show Analysis by City", True, key=1)
+show_city = st.sidebar.checkbox("Show Analysis by City")
 select_city = st.sidebar.selectbox('Select a City',sorted(houses_data[houses_data['state'] == select_state]['city'].unique()))
 
 
@@ -51,13 +51,19 @@ show_histograms = st.sidebar.checkbox("Show Histograms")
 show_summary = st.sidebar.checkbox("Show Summary Statistics Table")
 
 # Filter Data based on selections
-##price
-#filtered_data = houses_data[(houses_data["sold_price"] >= min_selection) & (houses_data["sold_price"] <= max_selection)]
-##state
-filtered_data = houses_data[houses_data['state'] == select_state]
-##city
-filtered_data = filtered_data[filtered_data['city'] == select_city]
-
+if show_state and show_city:
+    ##price
+    #filtered_data = houses_data[(houses_data["sold_price"] >= min_selection) & (houses_data["sold_price"] <= max_selection)]
+    ##state
+    filtered_data = houses_data[houses_data['state'] == select_state]
+    ##city
+    filtered_data = filtered_data[filtered_data['city'] == select_city]
+elif show_state:
+    filtered_data = houses_data[houses_data['state'] == select_state]
+elif show_city:
+    filtered_data = houses_data[houses_data['city'] == select_city]
+else:
+    filtered_data = houses_data
 st.write(f"Data Points: {len(filtered_data)}")
 
 # Plot the GPS coordinates on the map (need to change column names)
