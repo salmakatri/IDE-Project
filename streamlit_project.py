@@ -40,10 +40,10 @@ max_price = max(houses_data["sold_price"])
 # min_selection, max_selection = st.sidebar.slider("Sold Price $", min_value=min_price, max_value=max_price, value = [min_price, max_price])
 
 st.sidebar.checkbox("Show Analysis by State", True, key=1)
-select_state = st.sidebar.selectbox('Select a State',houses_data['state'].unique())
+select_state = st.sidebar.selectbox('Select a State',sorted(houses_data['state'].unique()))
 
 st.sidebar.checkbox("Show Analysis by City", True, key=1)
-select_city = st.sidebar.selectbox('Select a City',houses_data[houses_data['state'] == select_state]['city'].unique())
+select_city = st.sidebar.selectbox('Select a City',sorted(houses_data[houses_data['state'] == select_state]['city'].unique()))
 
 
 # Toggles for the feature selection in sidebar
