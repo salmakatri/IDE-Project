@@ -21,7 +21,7 @@ st.set_page_config(
 @st.cache(allow_output_mutation=True)
 def load_data():
     """ Load the cleaned data """
-    df = pd.read_csv("houses_data_sample.csv")
+    df = pd.read_csv("houses_data.csv")
     #houses_data["sold_date"] = pd.to_datetime(travel_log["ts"])
 #     engine = create_engine("sqlite:///sold_houses.db")
 #     df = pd.read_sql('SELECT * FROM houses;', engine)
@@ -43,6 +43,7 @@ show_state = st.sidebar.checkbox("Show Analysis by State")
 select_state = st.sidebar.selectbox('Select a State',sorted(houses_data['state'].unique()))
 
 show_city = st.sidebar.checkbox("Show Analysis by City")
+houses_data.city = houses_data.city.astype(str)
 select_city = st.sidebar.selectbox('Select a City',sorted(houses_data[houses_data['state'] == select_state]['city'].unique()))
 
 
