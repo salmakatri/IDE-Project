@@ -73,7 +73,7 @@ st.map(filtered_data)
 
 if show_histograms:
     #Number of sales by property type
-    sales = filtered_data.groupby(filtered_data['property_type']).size().plot(kind="bar")
+    sales = filtered_data.groupby(filtered_data['property_type']).size().sort_values(ascending=False).plot(kind="bar")
     sales.set_xlabel("property_type")
     hist_sales = sales.get_figure()
     st.subheader("# Sales Split by Property Type")
