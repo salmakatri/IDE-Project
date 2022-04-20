@@ -43,6 +43,7 @@ show_state = st.sidebar.checkbox("Show Analysis by State")
 select_state = st.sidebar.selectbox('Select a State',sorted(houses_data['state'].unique()))
 
 show_city = st.sidebar.checkbox("Show Analysis by City")
+houses_data.city = houses_data.city.astype(str)
 select_city = st.sidebar.selectbox('Select a City',sorted(houses_data[houses_data['state'] == select_state]['city'].unique()))
 
 
