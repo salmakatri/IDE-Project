@@ -67,7 +67,7 @@ else:
 st.write(f"Data Points: {len(filtered_data)}")
 
 # Plot the GPS coordinates on the map (need to change column names)
-st.map(filtered_data)
+map_fig = st.map(filtered_data)
 
 # Plot the histograms based on the selections
 
@@ -78,14 +78,14 @@ if show_histograms:
     sales.set_xlabel("Property Type")
     hist_sales = sales.get_figure()
     st.subheader("# Sales Split by Property Type")
-    st.pyplot(hist_sales)
+    sales_fig = st.pyplot(hist_sales)
     
     #Median Price by Property Type
     avg_price= filtered_data.groupby(filtered_data['property_type'])['sold_price'].median().sort_values(ascending=False).plot(kind="bar")
     avg_price.set_xlabel("Property Type")
     hist_price = avg_price.get_figure()
     st.subheader("Median Sold Price by Property Type")
-    st.pyplot(hist_price)
+    price_fig = st.pyplot(hist_price)
 
 def new_const(row):
     if row['year_built'] >= 2021:
@@ -100,5 +100,23 @@ if show_summary:
     new_const = "{} %".format(round(filtered_data['new_const'].sum()/filtered_data.shape[0]*100,2))
     median_price = "${}".format(int(filtered_data[ 'sold_price'].mean()))
     summary = pd.DataFrame({'Price per Sqft': [price_sqft], '% New Construction': [new_const], 'Median Price Sold': [median_price]} )
-    st.table(summary)
+    summary_fig = st.table(summary)
 
+container1 = st.container()
+col1, col2 = st.columns(2)
+
+with container1:
+    with col1:
+        map_fig
+    with col2:
+        summary_fig
+
+
+container2 = st.container()
+col3, col4 = st.columns(2)
+
+with container2:
+    with col3:
+        sales_fig
+    with col4:
+        price_fig
