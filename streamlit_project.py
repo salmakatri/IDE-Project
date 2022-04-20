@@ -18,7 +18,7 @@ st.set_page_config(
 )
 
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def load_data():
     """ Load the cleaned data """
     df = pd.read_csv("houses_data_sample.csv")
