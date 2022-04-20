@@ -38,8 +38,8 @@ houses_data['sold_date'] = pd.to_datetime(houses_data['sold_date'])
 min_date = min(houses_data["sold_date"])
 max_date = max(houses_data["sold_date"])
 
-# st.sidebar.subheader("Inputs")
-# min_selection, max_selection = st.sidebar.slider("Sold Price $", min_value=min_price, max_value=max_price, value = [min_price, max_price])
+st.sidebar.subheader("Inputs")
+min_selection, max_selection = st.sidebar.slider("Time Range", min_value=min_date, max_value=max_date, value = [min_date, max_date])
 
 show_state = st.sidebar.checkbox("Show Analysis by State")
 select_state = st.sidebar.selectbox('Select a State',sorted(houses_data['state'].unique()))
