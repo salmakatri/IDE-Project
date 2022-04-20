@@ -73,7 +73,7 @@ st.map(filtered_data)
 
 if show_histograms:
     #Number of sales by property type
-    plt.xticks(rotation=90)
+    plt.xticks(rotation='horizontal')
     sales = filtered_data.groupby(filtered_data['property_type']).size().sort_values(ascending=False).plot(kind="bar")
     sales.set_xlabel("Property Type")
     hist_sales = sales.get_figure()
