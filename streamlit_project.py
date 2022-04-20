@@ -32,9 +32,11 @@ st.title("🏠 Housing Market Dashboard")
 
 houses_data = load_data()
 
-# Calculate the price range for the slider
-min_price = min(houses_data["sold_price"])
-max_price = max(houses_data["sold_price"])
+houses_data['sold_date'] = pd.to_datetime(houses['sold_date'])
+
+# Calculate the date range for the slider
+min_date = min(houses_data["sold_date"])
+max_date = max(houses_data["sold_date"])
 
 # st.sidebar.subheader("Inputs")
 # min_selection, max_selection = st.sidebar.slider("Sold Price $", min_value=min_price, max_value=max_price, value = [min_price, max_price])
