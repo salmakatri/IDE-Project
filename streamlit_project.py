@@ -84,7 +84,7 @@ if show_histograms:
     #Median Price by Property Type
     avg_price= filtered_data.groupby(filtered_data['property_type'])['sold_price'].median().sort_values(ascending=False).plot(kind="bar")
     avg_price.set_xlabel("Property Type")
-    avg_price.set_xlabel("Price in $M")
+    avg_price.set_ylabel("Price in $M")
     hist_price = avg_price.get_figure()
     st.subheader("Median Sold Price by Property Type")
     st.pyplot(hist_price)  
