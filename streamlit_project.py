@@ -43,7 +43,7 @@ st.sidebar.checkbox("Show Analysis by State", True, key=1)
 select_state = st.sidebar.selectbox('Select a State',houses_data['state'].unique())
 
 st.sidebar.checkbox("Show Analysis by City", True, key=1)
-select_city = st.sidebar.selectbox('Select a City',houses_data['city'].unique())
+select_city = st.sidebar.selectbox('Select a City',houses_data[houses_data['state'] == select_state]['city'].unique())
 
 
 # Toggles for the feature selection in sidebar
