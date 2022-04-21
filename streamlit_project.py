@@ -38,10 +38,10 @@ houses_data = load_data()
 #houses_data['sold_date'] = houses_data['sold_date'].astype(str)
 
 # Calculate the date range for the slider
-min_date = min(houses_data["sold_date"])
-max_date = max(houses_data["sold_date"])
-# min_date =  datetime.strptime(min(houses_data["sold_date"]), "%Y-%m-%d")
-# max_date =  datetime.strptime(max(houses_data["sold_date"]), "%Y-%m-%d")
+#min_date = min(houses_data["sold_date"])
+#max_date = max(houses_data["sold_date"])
+min_date =  datetime.strptime(min(houses_data["sold_date"].astype(str)), "%Y-%m-%d")
+max_date =  datetime.strptime(max(houses_data["sold_date"].astype(str)), "%Y-%m-%d")
 
 
 st.sidebar.subheader("Inputs")
