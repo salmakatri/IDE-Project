@@ -32,7 +32,7 @@ st.title("🏠 Housing Market Dashboard")
 
 houses_data = load_data()
 
-#houses_data['sold_date'] = pd.to_datetime(houses_data['sold_date'])
+houses_data['sold_date'] = houses_data['sold_date'].astype(str)
 
 # Calculate the date range for the slider
 # min_date = min(houses_data["sold_date"])
