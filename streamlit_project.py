@@ -57,6 +57,9 @@ show_histograms = st.sidebar.checkbox("Show Histograms")
 show_summary = st.sidebar.checkbox("Show Summary Statistics Table")
 
 # Filter Data based on selections
+houses_data = houses_data[
+    (houses_data["sold_date"] >= min_selection) & (houses_data["sold_date"] <= max_selection)
+]
 if show_state and show_city:
     ##price
     #filtered_data = houses_data[(houses_data["sold_price"] >= min_selection) & (houses_data["sold_price"] <= max_selection)]
