@@ -31,7 +31,7 @@ st.title("🏠 Housing Market Dashboard")
 
 houses_data = load_data()
 
-#houses_data['sold_date'] = houses_data['sold_date'].astype(str)
+houses_data['sold_date'] = houses_data['sold_date'].astype(str)
 
 # Calculate the date range for the slider
 # min_date = min(houses_data["sold_date"])
@@ -58,7 +58,7 @@ show_summary = st.sidebar.checkbox("Show Summary Statistics Table")
 # Filter Data based on selections
 def convert_date(row):
     return datetime.strptime(row["sold_date"], "%Y-%m-%d")
-#houses_data['sold_date'] = houses_data.apply(convert_date, axis=1)
+houses_data['sold_date'] = houses_data.apply(convert_date, axis=1)
 houses_data = houses_data[
     (houses_data["sold_date"] >= min_selection) & (houses_data["sold_date"] <= max_selection)
 ]
