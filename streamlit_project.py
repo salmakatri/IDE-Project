@@ -8,6 +8,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime
+import pickle
 
 # set page layout
 st.set_page_config(
@@ -21,7 +22,10 @@ st.set_page_config(
 @st.cache(allow_output_mutation=True)
 def load_data():
     """ Load the cleaned data """
-    df = pd.read_csv("houses_data_v2.csv")
+    with open('houses_data.pkl', 'rb') as f:
+    df = pickle.load(f)
+    
+    #df = pd.read_csv("houses_data_v2.csv")
 #try pulling from sql
 #engine = create_engine("sqlite:///sold_houses.db")
     return df
@@ -31,7 +35,7 @@ st.title("🏠 Housing Market Dashboard")
 
 houses_data = load_data()
 
-houses_data['sold_date'] = houses_data['sold_date'].astype(str)
+#houses_data['sold_date'] = houses_data['sold_date'].astype(str)
 
 # Calculate the date range for the slider
 # min_date = min(houses_data["sold_date"])
@@ -58,7 +62,7 @@ show_summary = st.sidebar.checkbox("Show Summary Statistics Table")
 # Filter Data based on selections
 def convert_date(row):
     return datetime.strptime(row["sold_date"], "%Y-%m-%d")
-houses_data['sold_date'] = houses_data.apply(convert_date, axis=1)
+#houses_data['sold_date'] = houses_data.apply(convert_date, axis=1)
 houses_data = houses_data[
     (houses_data["sold_date"] >= min_selection) & (houses_data["sold_date"] <= max_selection)
 ]
