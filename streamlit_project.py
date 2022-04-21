@@ -23,11 +23,11 @@ st.set_page_config(
 def load_data():
     """ Load the cleaned data """
     with open('houses_data.pkl', 'rb') as f:
-    df = pickle.load(f)
+        df = pickle.load(f)
     
     #df = pd.read_csv("houses_data_v2.csv")
-#try pulling from sql
-#engine = create_engine("sqlite:///sold_houses.db")
+    #try pulling from sql
+    #engine = create_engine("sqlite:///sold_houses.db")
     return df
 
 
