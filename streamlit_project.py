@@ -7,7 +7,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-
+from datetime import datetime
 
 # set page layout
 st.set_page_config(
@@ -35,8 +35,11 @@ houses_data = load_data()
 houses_data['sold_date'] = pd.to_datetime(houses_data['sold_date'])
 
 # Calculate the date range for the slider
-min_date = min(houses_data["sold_date"])
-max_date = max(houses_data["sold_date"])
+# min_date = min(houses_data["sold_date"])
+# max_date = max(houses_data["sold_date"])
+min_date =  datetime.strptime(min(houses_data["sold_date"]), "%Y-%m-%d")
+max_date =  datetime.strptime(max(houses_data["sold_date"]), "%Y-%m-%d")
+
 
 st.sidebar.subheader("Inputs")
 min_selection, max_selection = st.sidebar.slider("Time Range", min_value=min_date, max_value=max_date, value = [min_date, max_date])
